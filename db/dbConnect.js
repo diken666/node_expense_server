@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host:"localhost",           //数据库
     user:"root",                //用户名
     password:"password",        //用户密码
-    database:"mydb"             //数据库名
+    database:"edb"             //数据库名
 
 });
 
