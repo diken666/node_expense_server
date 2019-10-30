@@ -28,3 +28,10 @@ CREATE TABLE `edb`.`userexpense` (
   `elec` FLOAT NOT NULL,
   `date` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`eid`));
+
+
+CREATE TABLE `edb`.`manager` (
+  `id` VARCHAR(20) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
