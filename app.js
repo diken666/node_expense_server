@@ -10,6 +10,7 @@ let loginRouter = require('./routes/login');
 
 let app = express();
 
+// todo 还需要建立一个抄表记录的表
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
