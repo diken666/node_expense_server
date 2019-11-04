@@ -35,3 +35,12 @@ CREATE TABLE `edb`.`manager` (
   `name` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
+
+CREATE TABLE `edb`.`record` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `rid` VARCHAR(45) NOT NULL,
+  `water` INT NOT NULL,
+  `elec` INT NOT NULL,
+  `date` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
