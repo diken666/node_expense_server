@@ -1,18 +1,46 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/dbConnect');
-const sql = require('../dbSql/login');
+const sql = require('../dbSql/sql');
 
 router.get('/', (req, res) => {
     let userId = req.cookies["userId"];
     if (userId) {
-        res.json({
-            state: "error",
-            msg: "请求出错"
-        })
+        db.query(sql.selectMan(userId), [], (err, response)=> {
+            if ( err ) {
+                res.json({
+                    state: "error",
+                    msg: "请求出错"
+                })
+            } else {
+                if ( response.length >= 1 ) {
+                    db.query(sql.getRoomInfo(), [], (err, response)=>{
+                        if(err) {
+                            res.json({
+                                state: "error",
+                                msg: "请求出错"
+                            })
+                        } else {
+                            res.json({
+                                state: "ok",
+                                msg: "请求成功",
+                                data: response
+                            })
+                        }
+                    })
+                } else {
+                    res.json({
+                        state: "logout",
+                        msg: "未登录"
+                    })
+                }
+            }
+        });
     } else {
-        console.log("123");
-        res.redirect('/');
+        res.json({
+            state: "logout",
+            msg: "未登录"
+        })
     }
 
 });

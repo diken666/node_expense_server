@@ -10,6 +10,8 @@ let loginRouter = require('./routes/login');
 let getRoomInfoRouter = require('./routes/getRoomInfo');
 let getUserState = require('./routes/getUserState');
 
+let testLoginRouter = require('./routes/testLogin');
+let testLogoutRouter = require('./routes/testLogout');
 
 let app = express();
 
@@ -28,6 +30,8 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/getRoomInfo', getRoomInfoRouter);
 app.use('/getUserState', getUserState);
+app.use('/testLogin', testLoginRouter);
+app.use('/testLogout', testLogoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

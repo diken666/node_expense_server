@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/dbConnect');
-const sql = require('../dbSql/login');
+const sql = require('../dbSql/sql');
 
 router.get('/', (req, res) => {
     let userId = req.cookies["userId"];
