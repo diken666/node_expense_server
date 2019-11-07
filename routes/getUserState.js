@@ -5,7 +5,6 @@ const sql = require('../dbSql/sql');
 
 router.get('/', (req, res) => {
     let userId = req.cookies["userId"];
-    res.header('Access-Control-Allow-Origin', '*');
     if (userId) {
         db.query(sql.selectMan(userId), [], (err, response)=>{
             if (err) {

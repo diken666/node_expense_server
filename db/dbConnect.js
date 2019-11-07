@@ -3,7 +3,7 @@ const pool = mysql.createPool({
 
     host:"localhost",           //数据库
     user:"root",                //用户名
-    password:"password",        //用户密码
+    password:"12345678",        //用户密码
     database:"edb"             //数据库名
 
 });
@@ -11,6 +11,7 @@ const pool = mysql.createPool({
 function query(sql, values, callback){
     pool.getConnection(function (err, connection) {
         if(err){
+            console.log(err)
             throw Error('数据库操作错误')
         }else{
             connection.query(sql, values, function(err, results, fields){

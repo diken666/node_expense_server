@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) =>{
     let id = req.body.id;
-    let psw = req.body.password;
+    let psw = req.body.psw;
+    console.log(id, psw);
     if (id && psw) {
         db.query(sql.selectMan(id), [], (err, response) => {
             if (err) {
