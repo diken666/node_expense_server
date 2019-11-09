@@ -16,11 +16,11 @@ let testLogoutRouter = require('./routes/testLogout');
 let app = express();
 
 app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3003");
     res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     // 跨域请求允许携带cookie
-    // res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Credentials", "true");
     next();
 });
 
