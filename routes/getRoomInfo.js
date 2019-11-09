@@ -14,18 +14,36 @@ router.get('/', (req, res) => {
                 })
             } else {
                 if ( response.length >= 1 ) {
-                    db.query(sql.getRoomInfo(), [], (err, response)=>{
+                    db.query(sql.getRoomInfo(), [], (err, roomData)=>{
                         if(err) {
                             res.json({
                                 state: "error",
                                 msg: "请求出错"
                             })
                         } else {
-                            res.json({
-                                state: "ok",
-                                msg: "请求成功",
-                                data: response
-                            })
+                            db.query(sql.getUserInfo(), [], (err, userData)=>{
+                                if ( err ){
+                                    res.json({
+                                        state: "error",
+                                        msg: "请求出错"
+                                    })
+                                } else {
+                                    for ( let i=0; i<roomData.length; i++ ) {
+                                        for ( let j=0; j<userData.length; j++ ){
+                                            if ( roomData[i].userId  === userData[j].uid) {
+                                                roomData[i].class = userData[j].class;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    res.json({
+                                        state: "ok",
+                                        msg: "请求成功",
+                                        data: roomData
+                                    });
+                                }
+                            });
+
                         }
                     })
                 } else {

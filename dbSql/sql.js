@@ -5,5 +5,9 @@ module.exports = {
 
     getRoomInfo() {
         return `select * from room`
+    },
+
+    getUserInfo(){
+        return `select * from user`
     }
 };

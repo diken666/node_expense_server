@@ -1,13 +1,14 @@
 CREATE TABLE `edb`.`room` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `rid` VARCHAR(20) NOT NULL,
-  `usesId` VARCHAR(100) NULL,
-  `usersName` VARCHAR(200) NULL,
-  PRIMARY KEY (`rid`));
+  `userId` INT NOT NULL,
+  `userName` VARCHAR(40) NULL,
+  PRIMARY KEY (`id`));
 
 
 CREATE TABLE `edb`.`user` (
   `uid` INT NOT NULL AUTO_INCREMENT,
-  `userName` VARCHAR(45) NOT NULL,
+  `userName` VARCHAR(40) NOT NULL,
   `class` VARCHAR(45) NULL,
   PRIMARY KEY (`uid`));
 
