@@ -3,7 +3,8 @@ const pool = mysql.createPool({
 
     host:"localhost",           //数据库
     user:"root",                //用户名
-    password:"12345678",        //用户密码
+    // password:"12345678",        //用户密码
+    password:"password",        //用户密码
     database:"edb"             //数据库名
 
 });
