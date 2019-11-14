@@ -1,4 +1,4 @@
-INSERT INTO `edb`.`room` (`rid`, `usesId`, `usersName`)
+INSERT INTO `edb`.`room` (`rid`, `uid`, `uname`)
 VALUES
 ('A06', 1, '王晓丽'),
 ('A07', 2, '徐永强'),

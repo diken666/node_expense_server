@@ -10,6 +10,7 @@ let loginRouter = require('./routes/login');
 let getRoomInfoRouter = require('./routes/getRoomInfo');
 let getUserState = require('./routes/getUserState');
 let logoutRouter = require('./routes/logout');
+let getRecentRoomExpense = require('./routes/getRecentRoomExpense');
 
 let testLoginRouter = require('./routes/testLogin');
 let testLogoutRouter = require('./routes/testLogout');
@@ -41,6 +42,7 @@ app.use('/login', loginRouter);
 app.use('/getRoomInfo', getRoomInfoRouter);
 app.use('/getUserState', getUserState);
 app.use('/logout', logoutRouter);
+app.use('/getRecentRoomExpense', getRecentRoomExpense);
 
 app.use('/testLogin', testLoginRouter);
 app.use('/testLogout', testLogoutRouter);

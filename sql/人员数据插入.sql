@@ -1,4 +1,4 @@
-INSERT INTO `edb`.`user` (`userName`, `class`)
+INSERT INTO `edb`.`user` (`uname`, `class`)
 VALUES
 ('王晓丽', '一号线'),
 ('徐永强', '一号线'),
