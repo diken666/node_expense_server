@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
                                         for ( let j=0; j<userData.length; j++ ){
                                             if ( roomData[i].uid  === userData[j].uid) {
                                                 roomData[i].class = userData[j].class;
-                                                break;
+                                                 break;
                                             }
                                         }
                                     }
