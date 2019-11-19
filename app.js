@@ -11,6 +11,8 @@ let getRoomInfoRouter = require('./routes/getRoomInfo');
 let getUserState = require('./routes/getUserState');
 let logoutRouter = require('./routes/logout');
 let getRecentRoomExpense = require('./routes/getRecentRoomExpense');
+let getAllRoomUser = require('./routes/getAllRoomUser');
+let getRecentRecordDate = require('./routes/getRecentRecordDate');
 
 let testLoginRouter = require('./routes/testLogin');
 let testLogoutRouter = require('./routes/testLogout');
@@ -18,7 +20,7 @@ let testLogoutRouter = require('./routes/testLogout');
 let app = express();
 
 app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3001");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3002");
     res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     // 跨域请求允许携带cookie
@@ -43,6 +45,9 @@ app.use('/getRoomInfo', getRoomInfoRouter);
 app.use('/getUserState', getUserState);
 app.use('/logout', logoutRouter);
 app.use('/getRecentRoomExpense', getRecentRoomExpense);
+app.use('/getAllRoomUser', getAllRoomUser);
+app.use('/getRecentRecordDate', getRecentRecordDate);
+
 
 app.use('/testLogin', testLoginRouter);
 app.use('/testLogout', testLogoutRouter);

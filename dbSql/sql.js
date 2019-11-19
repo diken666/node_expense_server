@@ -19,5 +19,10 @@ module.exports = {
     // 获取最近时间的房间记录
     getRecentRoomRecord(){
         return `select * from record where date = (select max(date) from recorddate);`
+    },
+
+    // 获取所有住户信息
+    getAllRoomUser() {
+        return 'select * from room;'
     }
 };
