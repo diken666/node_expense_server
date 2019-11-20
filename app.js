@@ -14,8 +14,6 @@ let getRecentRoomExpense = require('./routes/getRecentRoomExpense');
 let getAllRoomUser = require('./routes/getAllRoomUser');
 let getRecentRecordDate = require('./routes/getRecentRecordDate');
 
-let testLoginRouter = require('./routes/testLogin');
-let testLogoutRouter = require('./routes/testLogout');
 
 let app = express();
 
@@ -58,9 +56,6 @@ app.use('/getRecentRoomExpense', getRecentRoomExpense);
 app.use('/getAllRoomUser', getAllRoomUser);
 app.use('/getRecentRecordDate', getRecentRecordDate);
 
-
-app.use('/testLogin', testLoginRouter);
-app.use('/testLogout', testLogoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

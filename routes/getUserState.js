@@ -1,38 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db/dbConnect');
-const sql = require('../dbSql/sql');
+const jwt = require('jsonwebtoken');
 
 router.get('/', (req, res) => {
-    let userId = req.cookies["userId"];
-    if (userId) {
-        db.query(sql.selectMan(userId), [], (err, response)=>{
-            if (err) {
-                res.json({
-                    state: "logout",
-                    msg: "未登录"
-                });
-            } else {
-                if (response.length === 1) {
-                    res.json({
-                        state: "login",
-                        msg: "已登录"
-                    });
-                } else {
-                    res.json({
-                        state: "logout",
-                        msg: "未登录"
-                    });
-                }
-            }
-        });
-    } else {
+    let uname = req.cookies["uname"];
+    let token = req.cookies["token"];
+    try {
+        jwt.verify(token, uname);
         res.json({
-            state: "logout",
+            state: "login",
+            msg: "已登录"
+        });
+    }
+    catch (e) {
+        res.json({
+            state: "error",
             msg: "未登录"
         });
     }
-
 });
 
 module.exports = router;
