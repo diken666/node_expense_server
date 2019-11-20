@@ -19,13 +19,22 @@ let testLogoutRouter = require('./routes/testLogout');
 
 let app = express();
 
+let allowOrigin = [
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:3002",
+    "http://localhost:3003"
+];
+
 app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    // 跨域请求允许携带cookie
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
+    if ( allowOrigin.indexOf(req.headers.origin) >= 0 ) {
+        res.header("Access-Control-Allow-Origin", req.headers.origin);
+        res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
+        res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+        // 跨域请求允许携带cookie
+        res.header("Access-Control-Allow-Credentials", "true");
+        next();
+    }
 });
 
 
