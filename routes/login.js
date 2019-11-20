@@ -27,8 +27,8 @@ router.post('/', (req, res) =>{
                 if (response.length === 1) {
                     if (response[0].password === psw) {
                         let token = jwt.sign({ uname: response[0].name }, response[0].name);
-                        res.cookie('uname', response[0].name, { expires: new Date(Date.now() + 60 * 60 * 1000), singed: true});
-                        res.cookie('token', token, { expires: new Date(Date.now() + 60 * 60 * 1000), singed: true, httpOnly: true});
+                        res.cookie('uname', response[0].name, { expires: new Date(Date.now() + 2 * 60 * 60 * 1000), singed: true});
+                        res.cookie('token', token, { expires: new Date(Date.now() + 2 * 60 * 60 * 1000), singed: true, httpOnly: true});
                         res.json({
                             state: "ok",
                             msg: "请求成功",
