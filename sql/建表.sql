@@ -18,6 +18,8 @@ CREATE TABLE `edb`.`roomexpense` (
   `rid` VARCHAR(20) NOT NULL,
   `water` INT NOT NULL,
   `elec` INT NOT NULL,
+  `waterSpd` FLOAT NOT NULL,
+  `elecSpd` FLOAT NOT NULL,
   `date` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`eid`));
 
@@ -27,6 +29,10 @@ CREATE TABLE `edb`.`userexpense` (
   `uid` INT NOT NULL,
   `water` FLOAT NOT NULL,
   `elec` FLOAT NOT NULL,
+  `total` FLOAT NOT NULL,
+  `days` INT NOT NULL,
+  `startDate` VARCHAR(45) NOT NULL,
+  `endDate` VARCHAR(45) NOT NULL,
   `date` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`eid`));
 
