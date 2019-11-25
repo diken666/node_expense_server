@@ -29,6 +29,8 @@ router.post('/', (req, res) =>{
                         let token = jwt.sign({ uname: response[0].name }, response[0].name);
                         res.cookie('uname', response[0].name, { expires: new Date(Date.now() + 2 * 60 * 60 * 1000), singed: true});
                         res.cookie('token', token, { expires: new Date(Date.now() + 2 * 60 * 60 * 1000), singed: true, httpOnly: true});
+                        console.log(response[0].name);
+                        console.log(token);
                         res.json({
                             state: "ok",
                             msg: "请求成功",

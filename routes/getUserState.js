@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     }
     catch (e) {
         res.json({
-            state: "error",
+            state: "logout",
             msg: "未登录"
         });
     }
