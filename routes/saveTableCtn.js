@@ -13,14 +13,6 @@ router.post('/', (req, res)=>{
         let userRecord = JSON.parse(req.body["userRecord"]);
         let date = req.body.date;
 
-        //     water: null,
-        //     elec: null,
-        //     nowWaterSpd: null,
-        //     nowElecSpd: null,
-        //     nowWaterCost: null,
-        //     nowElecCost: null,
-        //     userData: []
-
         db.query(sql.insertDataToRoomExpense(roomData, date), [], (err, response)=> {
             if ( err ) {
                 console.log(err);

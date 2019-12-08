@@ -33,9 +33,9 @@ module.exports = {
         for ( let i=0; i<keys.length; i++ ) {
             let addBefore = '';
             addBefore = i === 0 ? ' ' : ' , ';
-            // sql += addBefore + ` ('${keys[i]}', ${roomData[keys[i]]["nowWaterSpd"]}, ${roomData[keys[i]]["nowElecSpd"]},
-            // ${roomData[keys[i]]["nowWaterCost"]}, ${roomData[keys[i]]["nowElecCost"]}, '${date}') `;
-            sql += addBefore + ` ('${keys[i]}', 1, 1, 1, 1, '${date}') `;
+            sql += addBefore + ` ('${keys[i]}', ${roomData[keys[i]]["nowWaterSpd"]}, ${roomData[keys[i]]["nowElecSpd"]},
+            ${roomData[keys[i]]["nowWaterCost"]}, ${roomData[keys[i]]["nowElecCost"]}, '${date}') `;
+            // sql += addBefore + ` ('${keys[i]}', 1, 1, 1, 1, '${date}') `;
 
         }
         return sql;
@@ -48,8 +48,8 @@ module.exports = {
         for ( let i=0; i<keys.length; i++ ) {
             let addBefore = '';
             addBefore = i === 0 ? ' ' : ' , ';
-            // sql +=  addBefore + ` ('${keys[i]}', ${roomData[keys[i]]["water"]}, ${roomData[keys[i]]["elec"]}, '${date}') `;
-            sql += addBefore + ` ('${keys[i]}', 1, 1, '${date}') `;
+            sql +=  addBefore + ` ('${keys[i]}', ${roomData[keys[i]]["water"]}, ${roomData[keys[i]]["elec"]}, '${date}') `;
+            // sql += addBefore + ` ('${keys[i]}', 1, 1, '${date}') `;
         }
         return sql;
     },
@@ -61,11 +61,11 @@ module.exports = {
         for ( let i=0; i<keys.length; i++ ) {
             let addBefore = '';
             addBefore = i === 0 ? ' ' : ' , ';
-            // sql += addBefore + ` (${userRecord[keys[i]]["uid"]},
-            //  ${userRecord[keys[i]]["waterSpd"]}, ${userRecord[keys[i]]["elecSpd"]}, ${userRecord[keys[i]]["totalSpd"]},
-            //  ${userRecord[keys[i]]["days"]}, '${userRecord[keys[i]]["startDate"]}', '${userRecord[keys[i]]["endDate"]}', '${date}') `
+            sql += addBefore + ` (${userRecord[keys[i]]["uid"]},
+             ${userRecord[keys[i]]["waterSpd"]}, ${userRecord[keys[i]]["elecSpd"]}, ${userRecord[keys[i]]["totalSpd"]},
+             ${userRecord[keys[i]]["days"]}, '${userRecord[keys[i]]["startDate"]}', '${userRecord[keys[i]]["endDate"]}', '${date}') `
 
-            sql += addBefore + ` (${userRecord[keys[i]]["uid"]}, 1, 1, 2, ${userRecord[keys[i]]["days"]}, '${userRecord[keys[i]]["startDate"]}', '${userRecord[keys[i]]["endDate"]}', '${date}') `
+            // sql += addBefore + ` (${userRecord[keys[i]]["uid"]}, 1, 1, 2, ${userRecord[keys[i]]["days"]}, '${userRecord[keys[i]]["startDate"]}', '${userRecord[keys[i]]["endDate"]}', '${date}') `
         }
         return sql;
     },
