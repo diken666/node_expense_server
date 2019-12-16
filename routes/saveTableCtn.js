@@ -11,9 +11,10 @@ router.post('/', (req, res)=>{
         jwt.verify(token, uname);
         let roomData = JSON.parse(req.body["roomData"]);
         let userRecord = JSON.parse(req.body["userRecord"]);
-        let date = req.body.date;
+        let nowDate = req.body["nowDate"];
+        let endDate = req.body["endDate"];
 
-        db.query(sql.insertDataToRoomExpense(roomData, date), [], (err, response)=> {
+        db.query(sql.insertDataToRoomExpense(roomData, endDate), [], (err, response)=> {
             if ( err ) {
                 console.log(err);
                 res.json({
@@ -21,7 +22,7 @@ router.post('/', (req, res)=>{
                     msg: "信息保存失败"
                 })
             } else {
-                db.query(sql.insertDataToRecord(roomData, date), [], (err, response)=> {
+                db.query(sql.insertDataToRecord(roomData, endDate), [], (err, response)=> {
                     if ( err ) {
                         console.log(err);
                         res.json({
@@ -29,7 +30,7 @@ router.post('/', (req, res)=>{
                             msg: "信息保存失败"
                         })
                     }
-                    db.query(sql.insertDataToUserExpense(userRecord, date), [], (err, response) => {
+                    db.query(sql.insertDataToUserExpense(userRecord, nowDate), [], (err, response) => {
                         if ( err ) {
                             console.log(err);
                             res.json({
@@ -37,7 +38,7 @@ router.post('/', (req, res)=>{
                                 msg: "信息保存失败"
                             })
                         } else {
-                            db.query(sql.insertDataToRecordDate(date), [], (err, response) => {
+                            db.query(sql.insertDataToRecordDate(endDate), [], (err, response) => {
                                 if ( err ) {
                                     console.log(err);
                                     res.json({
