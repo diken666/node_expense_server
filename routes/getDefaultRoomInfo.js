@@ -32,6 +32,7 @@ router.get('/', (req, res) => {
                                     recordInfoData[i].elecCost = REInfoData[j].elec;
                                     recordInfoData[i].waterPrice = REInfoData[j].waterSpd;
                                     recordInfoData[i].elecPrice = REInfoData[j].elecSpd;
+                                    recordInfoData[i].totalPrice = REInfoData[j].waterSpd + REInfoData[j].elecSpd;
                                     recordInfoData[i].date = REInfoData[j].date;
                                     break;
                                 }
