@@ -9,13 +9,44 @@ const jwt = require('jsonwebtoken');
 router.get('/', (req, res) => {
     let uname = req.cookies["uname"];
     let token = req.cookies["token"];
-    console.log("--->", jwt.verify(token, uname));
     try {
         jwt.verify(token, uname);
-        res.json({
-            state: "ok",
-            msg: "操作成功！"
-        });
+        db.query(sql.getRecentRecordInfo(), [], (err, recordInfoData)=> {
+            if ( err ) { 
+                return res.json( {
+                    state: "error",
+                    msg: "请求错误！"
+                })
+            } else {
+                db.query(sql.getRecentREInfo(), [], (err, REInfoData)=> {
+                    if ( err ) {
+                        return res.json({
+                            state: "error",
+                            msg: "请求错误！"
+                        })
+                    } else {
+                        for ( let i=0; i<recordInfoData.length; i++ ) {
+                            for ( let j=0; j<REInfoData.length; j++ ) {
+                                if(recordInfoData[i].rid === REInfoData[j].rid) {
+                                    recordInfoData[i].waterCost = REInfoData[j].water;
+                                    recordInfoData[i].elecCost = REInfoData[j].elec;
+                                    recordInfoData[i].waterPrice = REInfoData[j].waterSpd;
+                                    recordInfoData[i].elecPrice = REInfoData[j].elecSpd;
+                                    recordInfoData[i].date = REInfoData[j].date;
+                                    break;
+                                }
+                            }
+                        }
+                        res.json({
+                            state: "ok",
+                            msg: "操作成功！",
+                            data: recordInfoData
+                        })
+                    }
+                })
+                
+            }
+        })
     } catch( e ) {
         res.json({
             state: "error",

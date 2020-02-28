@@ -14,6 +14,7 @@ let getRecentRoomExpense = require('./routes/getRecentRoomExpense');
 let getAllRoomUser = require('./routes/getAllRoomUser');
 let getRecentRecordDate = require('./routes/getRecentRecordDate');
 let saveTableCtn = require('./routes/saveTableCtn');
+let getDefaultRoomInfo = require('./routes/getDefaultRoomInfo');
 
 
 let app = express();
@@ -57,6 +58,7 @@ app.use('/getRecentRoomExpense', getRecentRoomExpense);
 app.use('/getAllRoomUser', getAllRoomUser);
 app.use('/getRecentRecordDate', getRecentRecordDate);
 app.use('/saveTableCtn', saveTableCtn);
+app.use('/getDefaultRoomInfo', getDefaultRoomInfo);
 
 
 // catch 404 and forward to error handler

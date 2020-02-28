@@ -73,5 +73,19 @@ module.exports = {
     // 向recordDate表中插入数据
     insertDataToRecordDate(date) {
         return 'insert into recorddate ( `date` ) values ' + `( '${date}' )` ;
+    },
+
+    // 获取最近record表信息
+    getRecentRecordInfo() {
+        return `SELECT rid, water, elec FROM record
+        where date = (SELECT date FROM recorddate order by date desc limit 0, 1)
+        order by rid `
+    },
+
+    // 获取最近roomexpense表信息
+    getRecentREInfo() {
+        return `SELECT rid, water, elec, waterSpd, elecSpd, date FROM roomexpense
+        where date = (SELECT date FROM recorddate order by date desc limit 0, 1)
+        order by rid;`
     }
 };
