@@ -4,6 +4,7 @@ const db = require('../db/dbConnect');
 const sql = require('../dbSql/sql');
 const jwt = require('jsonwebtoken');
 
+// 根据rid获取房间的消费信息
 router.get('/', (req, res)=> {
     let token = req.cookies["token"];
     let uname = req.cookies["uname"];
