@@ -27,6 +27,7 @@ router.get('/', (req, res)=> {
                             })
                         } else {
                             for ( let i=0; i<roomData.length; i++ ) {
+                                roomData[i].totalPrice = (roomData[i].waterSpd +  roomData[i].elecSpd).toFixed(2);
                                 for ( let j=0; j<recordData.length; j++ ) {
                                     if ( roomData[i].date === recordData[j].date ) {
                                         roomData[i].waterRecord = recordData[j].water;
