@@ -87,5 +87,19 @@ module.exports = {
         return `SELECT rid, water, elec, waterSpd, elecSpd, date FROM roomexpense
         where date = (SELECT date FROM recorddate order by date desc limit 0, 1)
         order by rid;`
+    },
+
+    // 按房间号获取roomexpense表的信息
+    getRoomInfoByRid(rid){
+        return `SELECT * FROM roomexpense
+        where rid = '${rid}'
+        order by date;`
+    },
+
+    // 按房间号获取record表的信息
+    getRecordByRid(rid) {
+        return `SELECT * FROM record
+        where rid = '${rid}'
+        order by date;`
     }
 };
